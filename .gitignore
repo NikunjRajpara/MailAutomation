@@ -1,0 +1,29 @@
+# Python & Pytest
+__pycache__/
+*.py[cod]
+*$py.class
+.pytest_cache/
+.coverage
+htmlcov/
+
+# Credentials, Keys & Local Secrets (DO NOT PUSH TO GITHUB)
+credentials.json
+token.json
+.env
+
+# Environment & Virtual Environments
+env/
+venv/
+ENV/
+
+# Node & Frontend Build Artifacts
+frontend/node_modules/
+frontend/dist/
+node_modules/
+dist/
+
+# IDE & System Files
+.vscode/
+.idea/
+*.swp
+.DS_Store
