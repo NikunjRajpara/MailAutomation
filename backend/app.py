@@ -77,13 +77,12 @@ def get_system_status() -> Dict[str, Any]:
     has_token = config.TOKEN_FILE.exists()
     has_gemini = bool(config.GEMINI_API_KEY)
 
-    # Try to detect active email from token/service
-    detected_email = config.USER_EMAIL
+    detected_email = ""
     if has_token and has_credentials:
         try:
             creds = get_gmail_credentials()
             svc = GmailService(service=build_service(creds))
-            detected_email = svc.get_user_profile_email() or detected_email
+            detected_email = svc.get_user_profile_email()
         except Exception:
             pass
 
@@ -92,7 +91,7 @@ def get_system_status() -> Dict[str, Any]:
         "has_credentials": has_credentials,
         "has_token": has_token,
         "has_gemini_key": has_gemini,
-        "user_email": detected_email or "Not Connected",
+        "user_email": detected_email if detected_email else "Active Workspace Account",
         "model": config.GEMINI_MODEL,
         "lookback_hours": LATEST_BRIEFING_CACHE.get("hours", config.LOOKBACK_HOURS),
         "mark_as_read": config.MARK_AS_READ,

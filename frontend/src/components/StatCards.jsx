@@ -4,11 +4,11 @@ export default function StatCards({ stats, status }) {
   return (
     <div className="stats-grid">
       <div className="glass-card">
-        <div className="stat-card-title">Target Recipient Email</div>
-        <div className="stat-card-value" style={{ fontSize: '20px', color: '#6366F1' }}>
-          {status?.user_email || 'user@example.com'}
+        <div className="stat-card-title">Briefing Recipient Destination</div>
+        <div className="stat-card-value" style={{ fontSize: '18px', color: '#6366F1', wordBreak: 'break-all' }}>
+          {stats?.recipient || 'Enter recipient below'}
         </div>
-        <div className="stat-card-desc">Destination for daily briefing HTML dispatch</div>
+        <div className="stat-card-desc">Target address receiving the live HTML briefing</div>
       </div>
 
       <div className="glass-card">

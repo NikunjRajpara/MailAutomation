@@ -146,7 +146,7 @@ def run_pipeline(
     # Step 4: Formatting Briefing Email
     print("\n[4/5] 🎨 Formatting Daily Briefing HTML & Plain Text...")
     detected_email = gmail_svc.get_user_profile_email() if gmail_svc else ""
-    target_to = recipient_email or detected_email or config.USER_EMAIL or "user@example.com"
+    target_to = recipient_email or detected_email or "user@example.com"
     subject = "Your Daily AI Briefing"
     html_content, plain_content = BriefingFormatter.format_briefing(
         raw_ai_text=raw_ai_summary,
