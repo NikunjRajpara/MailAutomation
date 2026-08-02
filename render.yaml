@@ -1,0 +1,15 @@
+services:
+  - type: web
+    name: mail-automation
+    env: python
+    region: oregon
+    plan: free
+    buildCommand: "cd frontend && npm install && npm run build && cd ../backend && pip install -r requirements.txt"
+    startCommand: "cd backend && uvicorn app:app --host 0.0.0.0 --port $PORT"
+    envVars:
+      - key: GEMINI_MODEL
+        value: gemini-2.0-flash
+      - key: LOOKBACK_HOURS
+        value: "24"
+      - key: MARK_AS_READ
+        value: "true"
